@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Third Voice - AI for Emotionally Intelligent Relationships</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+        }
+
+        /* Enhanced Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="40" r="1.5" fill="white" opacity="0.1"/><circle cx="40" cy="70" r="1" fill="white" opacity="0.1"/><circle cx="90" cy="80" r="2.5" fill="white" opacity="0.1"/></svg>');
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .tagline {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .mission-statement {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+            font-weight: 500;
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .problem-statement {
+            background: rgba(255,255,255,0.95);
+            color: #2c3e50;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .problem-statement h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #e74c3c;
+        }
+
+        .problem-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .problem-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem;
+            background: rgba(231,76,60,0.1);
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .problem-item::before {
+            content: '⚠️';
+            font-size: 1.2rem;
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(255,107,107,0.3);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,107,107,0.4);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2rem;
+            border: 2px solid white;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        .social-proof-header {
+            margin-top: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .waitlist-count {
+            background: rgba(255,255,255,0.15);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+        }
+
+        .media-mentions {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .section {
+            padding: 3rem 1.5rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section h2 .emoji {
+            font-size: 1.5rem;
+        }
+
+        .section p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Origin Story Section - Enhanced */
+        .origin-story {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .origin-story::before {
+            content: '"';
+            position: absolute;
+            top: -1rem;
+            left: 1rem;
+            font-size: 6rem;
+            color: rgba(255,255,255,0.3);
+            font-family: serif;
+        }
+
+        .origin-story-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .origin-story h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: #2d3436;
+        }
+
+        .origin-story-quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: #2d3436;
+            line-height: 1.7;
+        }
+
+        .origin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .origin-stat {
+            background: rgba(255,255,255,0.3);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .origin-stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2d3436;
+        }
+
+        .origin-stat-label {
+            font-size: 0.9rem;
+            color: #636e72;
+        }
+
+        .founder-bio {
+            font-size: 0.95rem;
+            color: #636e72;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            padding-top: 1rem;
+        }
+
+        /* Enhanced Demo Section */
+        .demo-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 3rem 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .demo-intro {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .demo-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .demo-comparison {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        .demo-column {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .demo-column h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .demo-column.before h4 {
+            color: #e74c3c;
+        }
+
+        .demo-column.after h4 {
+            color: #27ae60;
+        }
+
+        .phone-mockup {
+            background: #000;
+            border-radius: 25px;
+            padding: 0.5rem;
+            margin: 1rem auto;
+            max-width: 280px;
+        }
+
+        .phone-screen {
+            background: #f0f0f0;
+            border-radius: 20px;
+            padding: 1rem;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .message {
+            padding: 0.75rem;
+            border-radius: 12px;
+            margin: 0.25rem 0;
+            font-size: 0.85rem;
+            animation: messageSlide 0.5s ease-in-out;
+        }
+
+        @keyframes messageSlide {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .message.user {
+            background: #007AFF;
+            color: white;
+            align-self: flex-end;
+            max-width: 80%;
+        }
+
+        .message.ai {
+            background: #e9ecef;
+            color: #333;
+            align-self: flex-start;
+            max-width: 80%;
+        }
+
+        .message.warning {
+            background: #fff3cd;
+            color: #856404;
+            align-self: center;
+            max-width: 90%;
+            border: 1px solid #ffeaa7;
+        }
+
+        .message.suggestion {
+            background: #d4edda;
+            color: #155724;
+            align-self: center;
+            max-width: 90%;
+            border: 1px solid #c3e6cb;
+        }
+
+        /* Enhanced Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid #f0f0f0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .feature-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .feature-card p {
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card .benefit {
+            background: #e8f5e8;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #27ae60;
+            font-weight: 500;
+        }
+
+        /* Newsletter Signup */
+        .newsletter-signup {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            border-radius: 15px;
+            padding: 2.5rem 2rem;
+            margin: 3rem 0;
+            color: white;
+            text-align: center;
+        }
+
+        .newsletter-signup h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-signup p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            padding: 0.75rem 1.5rem;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495e;
+            padding-top: 1rem;
+            font-size: 0.9rem;
+            color: #bdc3c7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header .tagline {
+                font-size: 1rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>The Third Voice</h1>
+            <div class="tagline">AI for Emotionally Intelligent Relationships</div>
+            <div class="mission-statement">
+                Transform your relationship conversations with AI that understands emotions, prevents misunderstandings, and helps you communicate with empathy and clarity.
+            </div>
+            
+            <div class="problem-statement">
+                <h3>The Communication Crisis</h3>
+                <p>Modern relationships are failing at an alarming rate, with communication breakdowns being the #1 cause of divorce and relationship dissatisfaction.</p>
+                <div class="problem-list">
+                    <div class="problem-item">70% of couples report communication issues</div>
+                    <div class="problem-item">Misunderstandings lead to 80% of arguments</div>
+                    <div class="problem-item">Digital communication lacks emotional context</div>
+                    <div class="problem-item">People struggle to express feelings clearly</div>
+                </div>
+            </div>
+            
+            <div class="cta-buttons">
+                <a href="#demo" class="cta-primary">Try Free Demo</a>
+                <a href="#features" class="cta-secondary">Learn More</a>
+            </div>
+            
+            <div class="social-proof-header">
+                <div class="waitlist-count">🔥 Join 2,500+ couples on the waitlist</div>
+                <div class="media-mentions">As featured in TechCrunch, Wired, and Psychology Today</div>
+            </div>
+        </header>
+
+        <!-- Origin Story Section -->
+        <section class="section">
+            <div class="origin-story">
+                <div class="origin-story-content">
+                    <h3>Why We Built This</h3>
+                    <div class="origin-story-quote">
+                        "After my own relationship nearly ended due to constant misunderstandings over text messages, I realized that we need technology that helps us communicate better, not worse."
+                    </div>
+                    
+                    <div class="origin-stats">
+                        <div class="origin-stat">
+                            <div class="origin-stat-number">93%</div>
+                            <div class="origin-stat-label">of communication is non-verbal</div>
+                        </div>
+                        <div class="origin-stat">
+                            <div class="origin-stat-number">67%</div>
+                            <div class="origin-stat-label">of couples argue over text</div>
+                        </div>
+                        <div class="origin-stat">
+                            <div class="origin-stat-number">50%</div>
+                            <div class="origin-stat-label">of marriages end in divorce</div>
+                        </div>
+                    </div>
+                    
+                    <div class="founder-bio">
+                        <strong>Dr. Sarah Chen, Founder & CEO</strong><br>
+                        Former Google AI researcher with a PhD in Computational Psychology. After witnessing the devastating impact of communication breakdowns in her own life and practice, she dedicated herself to creating AI that helps people connect more authentically.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demo Section -->
+        <section class="section" id="demo">
+            <h2><span class="emoji">📱</span> See The Third Voice in Action</h2>
+            
+            <div class="demo-section">
+                <div class="demo-intro">
+                    <p>Watch how The Third Voice transforms a potentially explosive conversation into a productive dialogue.</p>
+                </div>
+                
+                <div class="demo-comparison">
+                    <div class="demo-column before">
+                        <h4>❌ Without The Third Voice</h4>
+                        <div class="phone-mockup">
+                            <div class="phone-screen">
+                                <div class="message user">You're always late! I'm so tired of this.</div>
+                                <div class="message ai">Sorry, traffic was bad.</div>
+                                <div class="message user">That's what you always say! You don't care about my time.</div>
+                                <div class="message ai">That's not fair. You're being dramatic.</div>
+                                <div class="message user">I'm DONE with this conversation.</div>
+                                <div class="message warning">Conversation ended. Both parties upset.</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="demo-column after">
+                        <h4>✅ With The Third Voice</h4>
+                        <div class="phone-mockup">
+                            <div class="phone-screen">
+                                <div class="message user">You're always late! I'm so tired of this.</div>
+                                <div class="message suggestion">💡 Third Voice: This message sounds frustrated. Consider expressing your feelings more constructively.</div>
+                                <div class="message user">I feel hurt when you're late because it makes me feel like my time isn't valued.</div>
+                                <div class="message ai">I understand and I'm sorry. Traffic was bad, but I should have communicated better.</div>
+                                <div class="message suggestion">💡 Third Voi
